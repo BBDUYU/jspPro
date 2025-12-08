@@ -30,7 +30,7 @@
    제출 버튼을 클릭하면 책 제목, 저자, 나이는 필수 입력 항목
   </xmp>
   
-  <form action="ex02_ok.jsp" method="get" id="bookForm">
+  <form action="ex02_el_ok.jsp" method="get" id="bookForm">
   	책제목 : <input type="text" id="title" name="title"  autofocus="autofocus" value="JSP2.4"/><br>
   	저자 : <input type="text" id="author" name="author"  value="홍길동"/><br>
   	나이 : <input type="text" id="age" name="age" value="20"/><br>
