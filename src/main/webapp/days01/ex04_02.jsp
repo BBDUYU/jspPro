@@ -19,6 +19,8 @@
   Date hiredate;
   double sal;
   double comm;
+  
+		  
   int deptno = Integer.parseInt(request.getParameter("deptno"));
   
   ArrayList<EmpVO> list = null;

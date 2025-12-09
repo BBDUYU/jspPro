@@ -88,7 +88,7 @@
   jsp + Oracle 연동 => dept 부서정보를 얻어와서 <select>출력</select>
   </xmp>
   
-	<select onchange="location.href='ex04_02.jsp?deptno=' + this.value">
+	<select id="deptno" name="deptno">
     <option>부서선택....</option>
     
     <%
@@ -126,7 +126,7 @@
       <tbody>
         <%
          ir = list.iterator();
-        while ( ir.hasNext() ) {
+         while ( ir.hasNext() ) {
          vo = ir.next();
          deptno = vo.getDeptno();
          dname = vo.getDname();
@@ -145,7 +145,12 @@
 </div>
 
 <script>
-  
+  $("#deptno").on("change",function(){
+	  let deptno=$(this).val();
+	  if(!isNaN(deptno)){
+		  location.href=`ex04_02.jsp?deptno=\${deptno}`;
+	  }
+  })
 </script>
 
 </body>
