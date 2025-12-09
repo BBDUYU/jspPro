@@ -54,9 +54,14 @@
         
     4. 서블릿 등록할 때 정한  요청 URL로 클라이언트에서 요청.   
   </xmp>
-<a href="<%=contextPath%>/hello">/jspPro/hello</a><br />  
-</div>
-
+  <!-- get 방식 요청 -->
+<a href="<%=contextPath%>/hello?name=admin">/jspPro/hello?name=admin</a><br />  
+<%-- 
+<a href="<%=contextPath%>/days02/sample.html">/jspPro/days02/sample.html</a><br />  
+<a href="<%=contextPath%>/days02/sample.jsp">/jspPro/days02/sample.jsp</a><br />  
+<a href="<%= contextPath  %>/days02/test/xxx/sample.do">/jspPro/days02/test/xxx/sample.do</a><br>
+<a href="<%= contextPath  %>/days02/sample.do">/jspPro/days02/sample.do</a><br></div>
+ --%>
 <script>
   
 </script>

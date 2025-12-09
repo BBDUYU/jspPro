@@ -12,29 +12,31 @@ public class Hello extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doGet(request, response);
+				//super.service(request, response);
+				//html 생성해서 응답
+				response.setContentType("text/html;charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				
+				String pName=request.getParameter("name");
+				
+				
+				out.println("<html>");
+				out.println("<head><title>인사</title></head>");		
+				out.println("<body>");
+				out.println("안녕하세요");
+				out.println("홍길동님");
+				out.println("</body>");
+				out.println("</html>");
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		super.doPost(request, response);
 	}
-
+/*
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.service(request, response);
-		//html 생성해서 응답
-		PrintWriter out = response.getWriter();
-		out.println("<html>");
-		out.println("<head><title>인사</title></head>");		
-		out.println("<body>");
-		out.println("안녕하세요");
-		out.println("홍길동님");
-		out.println("</body>");
-		out.println("</html>");
+		
 	}
-	
+	*/
 }

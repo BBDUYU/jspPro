@@ -23,7 +23,11 @@
   	<!-- 확장자패턴<url-pattern>*.html</url-pattern> -->
   	<!-- 기본서블릿 매핑<url-pattern>/</url-pattern> -->
   	<!-- 정확한경로 매핑<url-pattern>/days02/ex01.jsp</url-pattern> -->
-  	<url-pattern></url-pattern>
+  	<url-pattern>/hello</url-pattern>
+  	<!-- <url-pattern>/days02/*.html</url-pattern> **오류** -->
+  	<!-- <url-pattern>/days02/sample.html</url-pattern>
+  	<url-pattern>/days02/sample.jsp</url-pattern>
+  	<url-pattern>*.do</url-pattern> -->
   </servlet-mapping>
   
 </web-app>
