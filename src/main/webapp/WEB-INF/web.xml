@@ -11,4 +11,19 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.xhtml</welcome-file>
   </welcome-file-list>
+  
+  <servlet>
+  	<description>첫 번째 서블릿 등록 예제</description>
+  	<servlet-name>hello</servlet-name>
+  	<servlet-class>days02.Hello</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>hello</servlet-name>
+  	<!-- 경로패턴 <url-pattern>/days02/*</url-pattern> -->
+  	<!-- 확장자패턴<url-pattern>*.html</url-pattern> -->
+  	<!-- 기본서블릿 매핑<url-pattern>/</url-pattern> -->
+  	<!-- 정확한경로 매핑<url-pattern>/days02/ex01.jsp</url-pattern> -->
+  	<url-pattern></url-pattern>
+  </servlet-mapping>
+  
 </web-app>
