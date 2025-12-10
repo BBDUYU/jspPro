@@ -34,6 +34,9 @@
   	3) /jspPro/scott/emp
   	4) ScottEmp.java
   	   ex08_emp.jsp - 해당부서사원테이블 출력
+  	   
+  	문제) /jspPro/scott/deptemp 요청
+  		ScottDeptEmp.java
   </xmp>
   <a href="${pageContext.request.contextPath }/scott/dept">/jspPro/scott/dept</a> <br />
   <a href="${pageContext.request.contextPath }/scott/emp">/jspPro/scott/emp</a> <br />

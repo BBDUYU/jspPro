@@ -29,13 +29,13 @@
   int deptParam = 10;
   
   if(dept!=null&&!dept.equals("")){
-	  try {
-		  deptParam = Integer.parseInt(dept);
-	    } catch(Exception e){
-	    	deptParam = 10; 
-	    }
+     try {
+        deptParam = Integer.parseInt(dept);
+       } catch(Exception e){
+          deptParam = 10; 
+       }
   }
-	
+   
   
   // org.doit.domain.DeptVO.java 추가
   ArrayList<DeptVO> Dlist = null;
@@ -80,54 +80,54 @@
   }// try
   
   try {
-	     String sql = "SELECT "
-	           + " * "
-	             + " FROM emp "
-	             + "WHERE deptno = ?";
-	     
-	     pstmt = con.prepareStatement(sql);
-	     pstmt.setInt(1,deptParam);
-	     rs = pstmt.executeQuery();
-	     
-	     if (rs.next()) {
-	        Elist = new ArrayList<>();
-	        do {
-	           empno = rs.getInt("empno");
-	           ename = rs.getString("ename");
-	           job = rs.getString("job");
-	           mgr = rs.getInt("mgr");
-	           hiredate = rs.getDate("hiredate");
-	           sal = rs.getDouble("sal");
-	           comm = rs.getDouble("comm");
-	           deptno = rs.getInt("deptno");
-	           
-	           Evo = new EmpVO().builder()
-	                       .empno(empno)
-	                       .ename(ename)
-	                       .job(job)
-	                       .mgr(mgr)
-	                       .hiredate(hiredate) 
-	                       .sal(sal)
-	                       .comm(comm)
-	                       .deptno(deptno)
-	                       .build();
-	           
-	           Elist.add(Evo);
-	           
-	        } while (rs.next());
-	        
-	     }
-	  }catch (Exception e){
-	     e.printStackTrace();
-	  }finally {
-	     try{
-	        rs.close();
-	        pstmt.close();
-	        DBConn.close();
-	     }catch(Exception e) {
-	        e.printStackTrace();
-	     }
-	  }
+        String sql = "SELECT "
+              + " * "
+                + " FROM emp "
+                + "WHERE deptno = ?";
+        
+        pstmt = con.prepareStatement(sql);
+        pstmt.setInt(1,deptParam);
+        rs = pstmt.executeQuery();
+        
+        if (rs.next()) {
+           Elist = new ArrayList<>();
+           do {
+              empno = rs.getInt("empno");
+              ename = rs.getString("ename");
+              job = rs.getString("job");
+              mgr = rs.getInt("mgr");
+              hiredate = rs.getDate("hiredate");
+              sal = rs.getDouble("sal");
+              comm = rs.getDouble("comm");
+              deptno = rs.getInt("deptno");
+              
+              Evo = new EmpVO().builder()
+                          .empno(empno)
+                          .ename(ename)
+                          .job(job)
+                          .mgr(mgr)
+                          .hiredate(hiredate) 
+                          .sal(sal)
+                          .comm(comm)
+                          .deptno(deptno)
+                          .build();
+              
+              Elist.add(Evo);
+              
+           } while (rs.next());
+           
+        }
+     }catch (Exception e){
+        e.printStackTrace();
+     }finally {
+        try{
+           rs.close();
+           pstmt.close();
+           DBConn.close();
+        }catch(Exception e) {
+           e.printStackTrace();
+        }
+     }
 %>
 <!DOCTYPE html>
 <html>
@@ -155,7 +155,7 @@
  
   </xmp>
   
-	<select id="deptno" name="deptno">
+   <select id="deptno" name="deptno">
     <%
       Dir = Dlist.iterator();
      while ( Dir.hasNext() ) {
@@ -218,7 +218,9 @@
       <tr>
         <td colspan="9">
           <span class="badge left red"><%= Elist == null? 0 : Elist.size() %>명</span>
-          <a href="javascript:history.back()">뒤로가기</a>
+          <a href="javascript:history.back()">뒤로가기</a> <br />
+          <a href="${pageContext.request.contextPath }/scott/deptemp">/jspPro/scott/deptemp</a> <br />
+          
           <button>선택한 empno 확인</button>
         </td>
       </tr>
@@ -231,10 +233,10 @@
 
 <script>
   $("#deptno").on("change",function(){
-	  let deptno=$(this).val();
-	  if(!isNaN(deptno)){
-		  location.href=`ex01.jsp?deptno=\${deptno}`;
-	  }
+     let deptno=$(this).val();
+     if(!isNaN(deptno)){
+        location.href=`ex01.jsp?deptno=\${deptno}`;
+     }
   })
   
   //$("#deptno").val(${param.deptno});
