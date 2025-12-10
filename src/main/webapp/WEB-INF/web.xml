@@ -30,4 +30,16 @@
   	<url-pattern>*.do</url-pattern> -->
   </servlet-mapping>
   
+  <servlet>
+  	<description>두 번째 서블릿 등록 예제</description>
+  	<servlet-name>user</servlet-name>
+  	<servlet-class>days02.User</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>user</servlet-name>
+  	
+  	<url-pattern>/question/user.htm</url-pattern>
+
+  </servlet-mapping>
+  
 </web-app>
