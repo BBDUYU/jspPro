@@ -79,13 +79,14 @@ $( function() {
   
 </div>
 <script>
+/*User.java 서블릿 클래스 doGet(), doPost()*/
 	$("#tabs-2 > form > button").on("click",function(){
 		let method = $(":radio[name=method]:checked").val();
 		$(this)
 			.parent()
 			.attr({
 				"method" : method,
-				"action" : `<%=contextPath %>/days02/ex05_03.jsp`
+				"action" : `<%=contextPath %>/question/user.htm`
 			})
 			.submit();
 	})
