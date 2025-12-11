@@ -114,7 +114,7 @@ public class ScottEmp extends HttpServlet {
 		request.setAttribute("list", list);
 	    request.setAttribute("deptno", deptno);
 		
-		String path="/days03/ex08_emp.jsp";
+		String path="/days03/ex08_emp_jstl.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		dispatcher.forward(request, response);
 	}	

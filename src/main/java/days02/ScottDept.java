@@ -77,7 +77,7 @@ public class ScottDept extends HttpServlet {
 		//list 부서정보 모두 포워딩
 		request.setAttribute("list", list);
 		
-		String path="/days03/ex08_dept.jsp";
+		String path="/days03/ex08_dept_jstl.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		dispatcher.forward(request, response);
 
