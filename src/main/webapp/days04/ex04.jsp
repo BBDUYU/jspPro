@@ -35,7 +35,7 @@
   	String contextPath = request.getContextPath();
   %>
   <!-- GET 방식 -->
-  <a href="<%=contextPath%>/cstvboard/list.htm">게시글 목록</a>
+  <a href="<%=contextPath%>/cstvsboard/list.htm">게시글 목록</a>
 </div>
 
 <script>

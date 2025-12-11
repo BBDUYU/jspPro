@@ -216,15 +216,17 @@ public class BoardDAOImpl implements BoardDAO {
 	public int update(BoardDTO dto) throws SQLException {
 
 		String sql = "UPDATE tbl_cstvsboard "
-				+ " SET email = ?, title = ?, content = ? "
-				+ " WHERE seq = ? ";
+	            + " SET email = ?, title = ?, content = ? , tag = ?"
+	            + " WHERE seq = ? AND pwd = ?";
 
 		int rowCount = 0;
 		pstmt = conn.prepareStatement(sql); 
 		pstmt.setString(1, dto.getEmail() );
 		pstmt.setString(2, dto.getTitle() );
 		pstmt.setString(3, dto.getContent() );
-		pstmt.setInt(4, dto.getSeq() );
+		pstmt.setInt(4, dto.getTag() );
+		pstmt.setInt(5, dto.getSeq() );
+		pstmt.setString(6, dto.getPwd() );
 		rowCount = pstmt.executeUpdate();
 		if( pstmt != null ) pstmt.close();
 		return rowCount;

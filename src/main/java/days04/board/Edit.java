@@ -17,21 +17,37 @@ import days04.board.domain.BoardDTO;
 import days04.board.persistence.BoardDAO;
 import days04.board.persistence.BoardDAOImpl;
 
-@WebServlet("/cstvsboard/write.htm")
-public class Write extends HttpServlet {
+@WebServlet("/cstvsboard/edit.htm")
+public class Edit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public Write() {
+    public Edit() {
         super();
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("> Write.doGet()");
-
-		//포워딩
+		int seq = Integer.parseInt(request.getParameter("seq"));
 		
-		String path = "/days04/board/write.jsp";
+		Connection conn=DBConn.getConnection();
+		BoardDAO dao = new BoardDAOImpl(conn);
+		
+		int rowCount=0;
+		BoardDTO dto=null;
+		try {
+			dto=dao.view(seq);
+		} catch (Exception e) {
+			System.out.println("> Edit.doGet() Exception");
+			e.printStackTrace();
+		} finally {
+			DBConn.close();
+		}
+		
+		request.setAttribute("dto", dto);
+		
+		//포워딩
+		String path = "/days04/board/edit.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		dispatcher.forward(request, response);
 	}
@@ -39,9 +55,10 @@ public class Write extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-		System.out.println("> Write.doPost()");
+		System.out.println("> Edit.doPost()");
 		
-		String writer=request.getParameter("writer"); 
+		int seq = Integer.parseInt(request.getParameter("seq"));
+		
 		String pwd=request.getParameter("pwd");
 		String email=request.getParameter("email");
 		String title=request.getParameter("title");
@@ -49,7 +66,7 @@ public class Write extends HttpServlet {
 		String content=request.getParameter("content");
 
 		BoardDTO dto=new BoardDTO().builder()
-				.writer(writer)
+				.seq(seq)
 				.pwd(pwd)
 				.email(email)
 				.title(title)
@@ -62,19 +79,20 @@ public class Write extends HttpServlet {
 		
 		int rowCount=0;
 		try {
-			rowCount=dao.insert(dto);
+			rowCount=dao.update(dto);
 		} catch (Exception e) {
-			System.out.println("> Write.doPost() Exception");
+			System.out.println("> Edit.doPost() Exception");
 			e.printStackTrace();
 		} finally {
 			DBConn.close();
 		}
 		
 		//리다이렉트
-		String location = "/jspPro/cstvsboard/list.htm";
+		String location = "/jspPro/cstvsboard/view.htm?seq="+seq;
 		//response.sendRedirect(location);
+		
 		PrintWriter out = response.getWriter();
-
+		
 		if (rowCount == 1) {
             out.println("<script>");
             out.println("alert('글이 성공적으로 수정되었습니다.');");

@@ -30,7 +30,7 @@
   </xmp>
   
   <h2>목록 보기</h2>
-  <a href="<%=contextPath %>/cstvboard/write.htm">글 쓰기</a>
+  <a href="<%=contextPath %>/cstvsboard/write.htm">글 쓰기</a>
   <table>
   	<thead>
   		<tr>
@@ -52,7 +52,7 @@
   				<c:forEach items="${list}" var="dto">
   					<tr>
   						<td>${dto.seq}</td> 
-  						<td>${dto.title}</td>
+  						<td> <a class="title" href="<%=contextPath %>/cstvsboard/view.htm?seq=${dto.seq}">${dto.title}</a></td>
   						<td>${dto.writer}</td>
   						<td>${dto.writedate}</td>
   						<td>${dto.readed}</td>
@@ -84,7 +84,7 @@
   	</tfoot>
   </table>
   <br />
-    <a href="<%=contextPath %>/cstvboard/write.htm">글 쓰기</a>
+    <a href="<%=contextPath %>/cstvsboard/write.htm">글 쓰기</a>
   <br />
 </div>
 

@@ -26,18 +26,18 @@
 </header>
 <div>
   <xmp class="code"> 
-  	write.jsp
+  	edit.jsp
   	각 입력태그의 name속성은 오라클의 테이블의 컬럼명과 동일
   </xmp>
   <form method="post">
    <table>
       <tr>
-         <td colspan="2" align="center"><b>글을 적어주세요</b></td>
+         <td colspan="2" align="center"><b>글을 수정합니다</b></td>
       </tr>
       <tr>
          <td align="center">이름</td>
-         <td><input type="text" name="writer" size="15"
-            autofocus="autofocus" required="required"></td>
+         <td><input type="text" name="writer" size="15" disabled="disabled"
+         value="${dto.writer}"></td>
       </tr>
       <tr>
          <td align="center">비밀번호</td>
@@ -46,37 +46,46 @@
       </tr>
       <tr>
          <td align="center">Email</td>
-         <td><input type="email" name="email" size="50"></td>
+         <td><input type="email" name="email" size="50" value="${dto.email}"></td>
       </tr>
       <tr>
          <td align="center">제목</td>
-         <td><input type="text" name="title" size="50"
-            required="required"></td>
+         <td><input type="text" name="title" size="50" required="required" value="${dto.title}"></td>
       </tr>
       <tr>
          <td align="center">내용</td>
-         <td><textarea name="content" cols="50" rows="10"></textarea></td>
+         <td><textarea name="content" cols="50" rows="10" >${dto.content}</textarea></td>
       </tr>
       <tr>
          <td align="center">HTML</td>
-         <td>
-            <input type="radio" name="tag" value="1" checked>적용
+         <td> value="${dto.tag }"
+            <input type="radio" name="tag" value="1">적용
             <input type="radio" name="tag" value="0">비적용
+            <%--  [1]
+            <input type="radio" name="tag" value="1" ${ dto.tag == 1 ? "checked" : "" }>적용            
+            <input type="radio" name="tag" value="0" ${ dto.tag == 0 ? "checked" : "" }>비적용
+             --%>
+            <script>
+				<%--  [2]
+				$(":radio[name=tag]").each(function (index, element){
+				   if( element.value == ${ dto.tag} ) element.checked = true;
+				});
+				--%>  
+				$(":radio[name=tag][value=${dto.tag}]").attr("checked", "checked");
+				<%-- [4] $(":radio[name=tag][value=${dto.tag}]").prop("checked", true); --%>  
+			</script>
          </td>
       </tr>
       <tr>
          <td colspan="2" align="center">
-            <input type="submit"   value="작성 완료"> &nbsp;&nbsp;&nbsp; 
-            <input type="reset"   value="다시 작성"> &nbsp;&nbsp;&nbsp;
-            <a href="<%=contextPath%>/cstvsboard/list.htm">Home</a></td>
+            <input type="submit"   value="수정"> &nbsp;&nbsp;&nbsp; 
+            <a href="javascript:hitsory.back();">이전</a></td>
       </tr>
    </table>
 </form>
 </div>
 
-<script>
-  
-</script>
+
 
 </body>
 </html>

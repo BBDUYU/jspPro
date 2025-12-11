@@ -2,6 +2,7 @@ package days04.board;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,43 +17,59 @@ import days04.board.domain.BoardDTO;
 import days04.board.persistence.BoardDAO;
 import days04.board.persistence.BoardDAOImpl;
 
-@WebServlet("/cstvsboard/list.htm")
-public class List extends HttpServlet {
+@WebServlet("/cstvsboard/view.htm")
+public class View extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public List() {
+    public View() {
         super();
     }
     //[1]
     int currentPage=1; //현재페이지
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("> List.doGet()");
+		System.out.println("> View.doGet()");
 		
-		try {
-			this.currentPage =Integer.parseInt(request.getParameter("page"));			
-		}catch(Exception e){
-			this.currentPage=1;
-		}
+
+		int seq =Integer.parseInt(request.getParameter("seq"));			
 		
 		Connection conn=DBConn.getConnection();
 		BoardDAO dao=new BoardDAOImpl(conn);
 		java.util.List<BoardDTO> list = null;
 		
+		BoardDTO dto = null;
+		int rowCount = 0;
+		
 		try {
-			list = dao.select(); //페이징처리 X
+			conn.setAutoCommit(false);
+			rowCount = dao.increaseReaded(seq);
+			dto = dao.view(seq);
+			conn.commit();
+			
 		}catch(Exception e) {
-			System.out.println(">List.doGet()");
+			
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			
+			System.out.println(">View.doGet() Transaction Rollback");
 			e.printStackTrace();
 		}finally {
+			try {
+				conn.setAutoCommit(true);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			DBConn.close();
 		}
 		
 		//포워딩
-		request.setAttribute("list", list);
+		request.setAttribute("dto", dto);
 		
-		String path = "/days04/board/list.jsp";
+		String path = "/days04/board/view.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		dispatcher.forward(request, response);
 	}
