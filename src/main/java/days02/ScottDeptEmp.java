@@ -154,7 +154,7 @@ public class ScottDeptEmp extends HttpServlet {
 	    request.setAttribute("deptParam", deptParam);
 	    
 		
-		String path="/days03/ex09_deptemp.jsp";
+		String path="/days03/ex09_deptemp_jstl.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		dispatcher.forward(request, response);
 	}

@@ -1,10 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2025. 12. 11. 오전 9:09:26</title>
+<title>2025. 12. 11. 오전 10:33:02</title>
 <link rel="shortcut icon" type="image/x-icon" href="http://localhost/jspPro/images/SiSt.ico">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link rel="stylesheet" href="http://localhost/jspPro/resources/cdn-main/example.css">
@@ -22,15 +23,14 @@
 </header>
 <div>
   <xmp class="code"> 
-  	ScottDeptEmp.java 서블릿
-  	days03.ex09_deptemp.jsp
-  	days03.ex09_deptemp_jstl.jsp
-  	
-  	JSTL
-  	<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
-  	
+  	ex02_finish
   </xmp>
-  
+  <%
+	String name = request.getParameter("name");
+	String age = request.getParameter("age");
+	%>
+	> 이름 : <%= name %> <br />
+	> 나이 : <%= age %> <br />
 </div>
 
 <script>
