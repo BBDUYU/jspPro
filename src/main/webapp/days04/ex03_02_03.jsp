@@ -1,3 +1,4 @@
+<%@page import="java.util.Enumeration"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
@@ -23,27 +24,26 @@
 </header>
 <div>
   <xmp class="code"> 
-  	상태 관리 - 세션(session),쿠키(cookie), DB X
-  			- input type="hidden" 태그
-  	
-  	ex03
-  	  ㄴ 이름, 나이
-  	  ㄴ [다음] -> ex03_02
-  	ex03_02
-  	  ㄴ 주소, 연락처
-  	  ㄴ [이전] -> ex03, [다음] -> ex03_03
-  	ex03_03
-  	  ㄴ 이전 페이지에서 입력햇던 정보들 모두 출력
+	param
   </xmp>
-  <form action="ex03_02_03.jsp">
-  	name : <input type="text" name="name" value="홍길동"/> <br />
-  	age : <input type="text" name="age" value="20"/> <br />
+  <%
+  	String name = request.getParameter("name");
+  	String age = request.getParameter("age");
+
+  %>
+  <form action="ex03_03.jsp">
+  	address : <input type="text" name="address" value="서울"/> <br />
+  	tel : <input type="text" name="tel" value="010"/> <br />
+
+  	
+  	<input type="button" value="Prev" onclick="history.back();"/>
   	<input type="submit" value="Next"/>
   </form>
 </div>
-
-<script>
-  
+<script>	
+	<c:forEach items="${param}" var="entry">
+		$("form").append($('<input type="hidden" name="${entry.key}" value="${entry.value}" >'));
+	</c:forEach> 
 </script>
 
 </body>

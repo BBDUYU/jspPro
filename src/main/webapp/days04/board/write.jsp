@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2025. 12. 11. 오전 11:07:03</title>
+<title>2025. 12. 11. 오후 2:50:33</title>
 <link rel="shortcut icon" type="image/x-icon" href="http://localhost/jspPro/images/SiSt.ico">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link rel="stylesheet" href="http://localhost/jspPro/resources/cdn-main/example.css">
@@ -23,23 +23,9 @@
 </header>
 <div>
   <xmp class="code"> 
-  	상태 관리 - 세션(session),쿠키(cookie), DB X
-  			- input type="hidden" 태그
   	
-  	ex03
-  	  ㄴ 이름, 나이
-  	  ㄴ [다음] -> ex03_02
-  	ex03_02
-  	  ㄴ 주소, 연락처
-  	  ㄴ [이전] -> ex03, [다음] -> ex03_03
-  	ex03_03
-  	  ㄴ 이전 페이지에서 입력햇던 정보들 모두 출력
   </xmp>
-  <form action="ex03_02_03.jsp">
-  	name : <input type="text" name="name" value="홍길동"/> <br />
-  	age : <input type="text" name="age" value="20"/> <br />
-  	<input type="submit" value="Next"/>
-  </form>
+  
 </div>
 
 <script>
