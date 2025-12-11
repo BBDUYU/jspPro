@@ -23,23 +23,20 @@
 </header>
 <div>
   <xmp class="code"> 
-  	상태 관리 - 세션(session),쿠키(cookie), DB X
-  			- input type="hidden" 태그
-  	
   	ex03
-  	  ㄴ 이름, 나이
-  	  ㄴ [다음] -> ex03_02
   	ex03_02
-  	  ㄴ 주소, 연락처
-  	  ㄴ [이전] -> ex03, [다음] -> ex03_03
   	ex03_03
-  	  ㄴ 이전 페이지에서 입력햇던 정보들 모두 출력
   </xmp>
-  <form action="ex03_02_02.jsp">
-  	name : <input type="text" name="name" value="홍길동"/> <br />
-  	age : <input type="text" name="age" value="20"/> <br />
-  	<input type="submit" value="Next"/>
-  </form>
+  <%
+  	String name = request.getParameter("name");
+  	String age = request.getParameter("age");
+  	String address = request.getParameter("address");
+  	String tel = request.getParameter("tel");
+  %>
+  > 이름 : <%=name %><br>
+  > 나이 : <%=age %><br>
+  > 주소 : <%=address %><br>
+  > 연락처 : <%=tel %><br>
 </div>
 
 <script>
