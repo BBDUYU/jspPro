@@ -13,7 +13,7 @@ public class MemberInfo implements Serializable{
    private static final long serialVersionUID = -2169848001981138932L;
    private String id;
    private String name;
-   private String passwd;
+   private String password;
    private String email;
    private Date registerDate;
    

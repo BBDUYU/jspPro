@@ -29,19 +29,19 @@
   <%
     String id = request.getParameter("id");
     String name = request.getParameter("name");
-    String passwd = request.getParameter("passwd");
+    String password = request.getParameter("password");
     String email = request.getParameter("email");
     
     MemberInfo mi = new MemberInfo();
     mi.setId(id);
     mi.setName(name);
-    mi.setPasswd(passwd);
+    mi.setPassword(password);
     mi.setEmail(email);
   %>
   
   아이디 : <%= mi.getId() %><br>
   이름 : <%= mi.getName() %><br>
-  비밀번호 : <%= mi.getPasswd() %><br>
+  비밀번호 : <%= mi.getPassword() %><br>
   이메일 : <%= mi.getEmail() %><br>
   
   <%-- 

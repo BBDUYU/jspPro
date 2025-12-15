@@ -35,7 +35,7 @@
   
   아이디 : <jsp:getProperty property="id" name="mi"/><br>
   이름 : <jsp:getProperty property="name" name="mi"/><br>
-  비밀번호 : <%= mi.getPasswd() %><br>
+  비밀번호 : <%= mi.getPassword() %><br>
   이메일 : <%= mi.getEmail() %><br>
   등록일 : <%= mi.getRegisterDate() %><br>
   
