@@ -1,8 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
+<%-- <%
 	String contextPath = request.getContextPath();
-%>
+%> --%>
+<%@include file="/WEB-INF/inc/include.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +23,11 @@
   <xmp class="code"> 
     ex04_member_template.jsp
     	jsp:include 액션태그 - 페이지 모듈화
+    	
+    	top.jsp 등 : contextPath 변수 X
+    		해결 : WEB-INF
+    				ㄴ inc 폴더
+    					ㄴ include.jspf
   </xmp>
   <table>
     <tr height="500px">
@@ -48,5 +54,7 @@
 </script>
 
 </body>
-<jsp:include page="/layout/bottom.jsp" flush="false"></jsp:include>
+<jsp:include page="/layout/bottom.jsp" flush="false">
+	<jsp:param value="contextPath" name="cp"/>
+</jsp:include>
 </html>
