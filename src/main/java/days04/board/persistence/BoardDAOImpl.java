@@ -190,6 +190,22 @@ public class BoardDAOImpl implements BoardDAO {
 		return this.vo;
 	}
 
+	// [A]
+	public int delete(long seq, String pwd) throws SQLException {
+
+		String sql = "DELETE FROM tbl_cstvsboard "
+				+ " WHERE seq = ? AND pwd = ? ";
+		int rowCount = 0;
+
+		this.pstmt = this.conn.prepareStatement(sql);
+		this.pstmt.setLong(1, seq);
+		this.pstmt.setString(2, pwd);
+		rowCount = this.pstmt.executeUpdate();
+		if(this.pstmt != null) this.pstmt.close();   
+		return rowCount;
+
+	}
+
 	@Override
 	public int delete(int seq) throws SQLException {
 
@@ -216,17 +232,19 @@ public class BoardDAOImpl implements BoardDAO {
 	public int update(BoardDTO dto) throws SQLException {
 
 		String sql = "UPDATE tbl_cstvsboard "
-	            + " SET email = ?, title = ?, content = ? , tag = ?"
-	            + " WHERE seq = ? AND pwd = ?";
+				+ " SET email = ?, title = ?, content = ?, tag = ? "
+				+ " WHERE seq = ? AND pwd = ? ";
 
 		int rowCount = 0;
 		pstmt = conn.prepareStatement(sql); 
+
 		pstmt.setString(1, dto.getEmail() );
 		pstmt.setString(2, dto.getTitle() );
 		pstmt.setString(3, dto.getContent() );
 		pstmt.setInt(4, dto.getTag() );
 		pstmt.setInt(5, dto.getSeq() );
 		pstmt.setString(6, dto.getPwd() );
+
 		rowCount = pstmt.executeUpdate();
 		if( pstmt != null ) pstmt.close();
 		return rowCount;
@@ -444,7 +462,7 @@ public class BoardDAOImpl implements BoardDAO {
 				+ "    WHERE ROWNUM <= ?  \r\n"   // ? end
 				+ ")\r\n"
 				+ "WHERE RNUM >= ?";              // ? start
-		
+
 		System.out.println(sql);
 
 		ArrayList<BoardDTO> list = null;
@@ -453,15 +471,15 @@ public class BoardDAOImpl implements BoardDAO {
 		String title, writer, email;
 		Date writedate;
 		int readed;
-		
+
 		int start = (currentPage-1)*numberPerPage + 1;
 		int end = start + numberPerPage -1;	
 
 		try {			
 			pstmt = conn.prepareStatement(sql);
-			
+
 			this.pstmt.setString(1, keyword);
-			
+
 			if( condition.equals("tc") ) {
 				this.pstmt.setString(2, keyword); 
 				this.pstmt.setInt(3, end);
@@ -470,7 +488,7 @@ public class BoardDAOImpl implements BoardDAO {
 				this.pstmt.setInt(2, end);
 				this.pstmt.setInt(3, start);
 			}
-			
+
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -515,38 +533,38 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public int getTotalPages(int numberPerPage, String condition
 			, String keyword) {
-		
+
 		String sql = "SELECT CEIL(COUNT(*)/?)"
 				+ " FROM tbl_cstvsboard"
 				+ " WHERE ";  
-		
+
 		// WHERE 조건절 
-	      switch (condition) {
-	      case "t":   
-	         sql += " REGEXP_LIKE( title , ? , 'i') ";
-	         break;
-	      case "c":
-	         sql += " REGEXP_LIKE( content , ? , 'i') ";
-	         break;
-	      case "w":
-	         sql += " REGEXP_LIKE( writer , ? , 'i') ";
-	         break;
-	      case "tc":
-	         sql += " REGEXP_LIKE( title , ? , 'i') OR REGEXP_LIKE( content , ? , 'i') ";
-	         break;    
-	      }
+		switch (condition) {
+		case "t":   
+			sql += " REGEXP_LIKE( title , ? , 'i') ";
+			break;
+		case "c":
+			sql += " REGEXP_LIKE( content , ? , 'i') ";
+			break;
+		case "w":
+			sql += " REGEXP_LIKE( writer , ? , 'i') ";
+			break;
+		case "tc":
+			sql += " REGEXP_LIKE( title , ? , 'i') OR REGEXP_LIKE( content , ? , 'i') ";
+			break;    
+		}
 
 		int totalPages = 0;	 
 
 		try {			
 			pstmt = conn.prepareStatement(sql); 
-			
+
 			pstmt.setInt(1, numberPerPage);
-			
+
 			this.pstmt.setString(2, keyword); 
 			if( condition.equals("tc")) 
 				this.pstmt.setString(3, keyword); 
-			
+
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				totalPages = rs.getInt(1);
@@ -564,6 +582,35 @@ public class BoardDAOImpl implements BoardDAO {
 		} 
 
 		return totalPages;
+	}
+	
+	@Override
+	public String getOriginalPwd(int seq) throws SQLException {
+		String  originalPwd = null;
+		
+		String sql =   "  SELECT pwd "
+				+ " FROM tbl_cstVSBoard "
+				+ " WHERE seq = ? "; 
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			this.pstmt.setInt(1, seq); 
+			rs = pstmt.executeQuery();
+			if (rs.next()) { 
+				originalPwd = rs.getString("pwd"); 
+			} // if
+		} catch (SQLException e) { 
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return originalPwd;
 	}
 
 }

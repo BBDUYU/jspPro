@@ -1,6 +1,7 @@
 package days04.board;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 
@@ -19,34 +20,37 @@ import days04.board.persistence.BoardDAOImpl;
 
 @WebServlet("/cstvsboard/edit.htm")
 public class Edit extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
-       
-
+	
     public Edit() {
-        super();
-    }
+        super(); 
+    } 
     
+    // edit.htm?seq=160
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("> Write.doGet()");
+		System.out.println("> Edit.doGet()...");
+		
 		int seq = Integer.parseInt(request.getParameter("seq"));
 		
-		Connection conn=DBConn.getConnection();
+		Connection conn = DBConn.getConnection();
 		BoardDAO dao = new BoardDAOImpl(conn);
 		
-		int rowCount=0;
-		BoardDTO dto=null;
+		int rowCount = 0;
+		BoardDTO dto = null;
+		
 		try {
-			dto=dao.view(seq);
-		} catch (Exception e) {
-			System.out.println("> Edit.doGet() Exception");
+			dto = dao.view(seq);
+		}catch (Exception e) {
+			System.out.println("> Edit.doGet() Exception...");
 			e.printStackTrace();
 		} finally {
 			DBConn.close();
 		}
-		
+		 
+		// 포워딩 
 		request.setAttribute("dto", dto);
 		
-		//포워딩
 		String path = "/days04/board/edit.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		dispatcher.forward(request, response);
@@ -54,48 +58,49 @@ public class Edit extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html;charset=UTF-8");
-		System.out.println("> Edit.doPost()");
+		response.setContentType("text/html; charset=UTF-8");
 		
-		int seq = Integer.parseInt(request.getParameter("seq"));
+		System.out.println("> Edit.doPost()...");
 		
-		String pwd=request.getParameter("pwd");
-		String email=request.getParameter("email");
-		String title=request.getParameter("title");
-		int tag=Integer.parseInt(request.getParameter("tag"));
-		String content=request.getParameter("content");
+		int seq = Integer.parseInt(request.getParameter("seq"));		
+		String pwd = request.getParameter("pwd");
+		String email = request.getParameter("email");
+		String title = request.getParameter("title");
+		int tag = Integer.parseInt( request.getParameter("tag") );
+		String content = request.getParameter("content");
 
-		BoardDTO dto=new BoardDTO().builder()
+		BoardDTO dto = new BoardDTO().builder()
 				.seq(seq)
 				.pwd(pwd)
 				.email(email)
 				.title(title)
 				.tag(tag)
-				.content(content)
+				.content(content)				
 				.build();
 
-		Connection conn=DBConn.getConnection();
+		Connection conn = DBConn.getConnection();
 		BoardDAO dao = new BoardDAOImpl(conn);
 		
-		int rowCount=0;
+		int rowCount = 0;
+		
 		try {
-			rowCount=dao.update(dto);
-		} catch (Exception e) {
-			System.out.println("> Edit.doPost() Exception");
+			rowCount = dao.update(dto);
+		}catch (Exception e) {
+			System.out.println("> Edit.doPost() Exception...");
 			e.printStackTrace();
 		} finally {
 			DBConn.close();
 		}
 		
-		//리다이렉트
-		String location = "/jspPro/cstvsboard/view.htm?seq="+seq;
-		//response.sendRedirect(location);
+		// 리다이렉트
+		String location = "/jspPro/cstvsboard/view.htm?seq="+ seq;
+		// response.sendRedirect(location);
 		
 		PrintWriter out = response.getWriter();
 		
 		if (rowCount == 1) {
             out.println("<script>");
-            out.println("alert('글이 성공적으로 수정되었습니다.');");
+            out.println("alert('글이 성공적으로 작성되었습니다.');");
             out.println("location.href='"+ location+"'");
             out.println("</script>");
         } else {
@@ -104,6 +109,7 @@ public class Edit extends HttpServlet {
             out.println("history.back();");
             out.println("</script>");
         }
+		
 	}
 
 }

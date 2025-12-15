@@ -2,7 +2,6 @@ package days04.board;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,54 +18,58 @@ import days04.board.persistence.BoardDAOImpl;
 
 @WebServlet("/cstvsboard/view.htm")
 public class View extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
-       
-
+	
     public View() {
-        super();
+        super(); 
     }
-    //[1]
-    int currentPage=1; //현재페이지
     
+    // [1]
+    int currentPage = 1;  // 현재 페이지 번호
+ 
+    // View.htm?seq=3
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("> View.doGet()");
-		
-
-		int seq =Integer.parseInt(request.getParameter("seq"));			
-		
-		Connection conn=DBConn.getConnection();
-		BoardDAO dao=new BoardDAOImpl(conn);
-		java.util.List<BoardDTO> list = null;
+		System.out.println("> View.doGet()...");
+				
+		int seq = Integer.parseInt( request.getParameter("seq" ) );			
+				
+		Connection conn = DBConn.getConnection();
+		BoardDAO dao = new BoardDAOImpl(conn);
 		
 		BoardDTO dto = null;
 		int rowCount = 0;
 		
 		try {
+			
 			conn.setAutoCommit(false);
+			
+			// 1. 해당 게시글 조회수 증가
 			rowCount = dao.increaseReaded(seq);
+			// 2. 해당 게시글 얻어오기
 			dto = dao.view(seq);
+			
 			conn.commit();
-			
-		}catch(Exception e) {
-			
+		} catch (Exception e) {
 			try {
-				conn.rollback();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
+				conn.rollback();				
+			} catch (Exception e2) {
+				System.out.println("> View.doGet() Transaction Rollback...");
+				e2.printStackTrace();
 			}
 			
-			System.out.println(">View.doGet() Transaction Rollback");
+			System.out.println("> View.doGet() Exception...");
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-				conn.setAutoCommit(true);
-			} catch (SQLException e) {
-				e.printStackTrace();
+				conn.setAutoCommit(true);				
+			} catch (Exception e2) {
+				e2.printStackTrace();
 			}
 			DBConn.close();
-		}
+		} // try
 		
-		//포워딩
+		// 포워딩
 		request.setAttribute("dto", dto);
 		
 		String path = "/days04/board/view.jsp";

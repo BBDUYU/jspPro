@@ -12,14 +12,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class BoardDTO {
-	private int seq;        
-	private String writer;  
+	
+	private int seq;         
+	private String writer;
 	private String pwd;  
 	private String email; 
-	private String title; 
+	private String title; //  subject  
 	private Date writedate;          
 	private int readed;        
-	private int tag;        
-	private String content;  
-	
+	private int tag;     
+	private String content; 
+
 }
