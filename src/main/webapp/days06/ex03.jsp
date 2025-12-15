@@ -1,12 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%-- <%@ page errorPage="/WEB-INF/error/viewErrorMessage.jsp" %> --%>
+<%-- <%@ page autoFlush="false" buffer="1kb" %> --%>
+ <%@ page autoFlush="true" buffer="1kb" %> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2025. 12. 15. 오전 9:48:18</title>
+<title>2025. 12. 15. 오전 10:47:16</title>
 <link rel="shortcut icon" type="image/x-icon" href="http://localhost/jspPro/images/SiSt.ico">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link rel="stylesheet" href="http://localhost/jspPro/resources/cdn-main/example.css">
@@ -24,21 +25,16 @@
 </header>
 <div>
   <xmp class="code"> 
-  	ex02
-  	
-  	jsp 페이지에서 에러 발생할때 처리하는 방버
-  	
-  	1. 에러페이지 지정해서관리
+  	[ex03]
+  	버퍼와 에러페이지의 관계
   </xmp>
-  	<%
-  		String name = null;
-  	
-  		name = request.getParameter("name");
-  	  	name = name.toUpperCase();
-  	%>
-  	> name = <%=name %>
-  	
-  	
+  <%
+  	for(int i=1;i<=10000;i++){
+  		out.print("["+i+"]");
+  		//if(i%10==0) out.flush();
+  		if(i==3)out.clearBuffer();
+  	}
+  %>
   
 </div>
 
