@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page errorPage="/WEB-INF/error/viewErrorMessage.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
@@ -27,26 +28,15 @@
   	
   	jsp 페이지에서 에러 발생할때 처리하는 방버
   	
+  	1. 에러페이지 지정해서관리
   </xmp>
   	<%
   		String name = null;
-  		
-  		
-  		try{
-  			name = request.getParameter("name");
-  	  		name = name.toUpperCase();
-  	  	%>	
-  	  	> name = <%=name %>
-  	  	<% 
-  		}catch(NullPointerException e){
-		%>  			
-  			"오류 : name 파라미터 X"
-  		
-  		<%	
-  		}catch(Exception e){
-  			
-  		}
-  		%>
+  	
+  		name = request.getParameter("name");
+  	  	name = name.toUpperCase();
+  	%>
+  	> name = <%=name %>
   	
   	
   

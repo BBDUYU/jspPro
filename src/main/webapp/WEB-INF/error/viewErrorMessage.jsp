@@ -1,11 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page isErrorPage="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2025. 12. 15. 오전 9:48:18</title>
+<title>2025. 12. 15. 오전 10:22:08</title>
 <link rel="shortcut icon" type="image/x-icon" href="http://localhost/jspPro/images/SiSt.ico">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link rel="stylesheet" href="http://localhost/jspPro/resources/cdn-main/example.css">
@@ -23,32 +24,15 @@
 </header>
 <div>
   <xmp class="code"> 
-  	ex02
-  	
-  	jsp 페이지에서 에러 발생할때 처리하는 방버
-  	
+    요청 처리 과정에서 에러가 발생했습니다.
+   빠른 시간 내에 문제를 해결하도록 하겠습니다.
   </xmp>
-  	<%
-  		String name = null;
-  		
-  		
-  		try{
-  			name = request.getParameter("name");
-  	  		name = name.toUpperCase();
-  	  	%>	
-  	  	> name = <%=name %>
-  	  	<% 
-  		}catch(NullPointerException e){
-		%>  			
-  			"오류 : name 파라미터 X"
-  		
-  		<%	
-  		}catch(Exception e){
-  			
-  		}
-  		%>
-  	
-  	
+  
+  <p>
+     jsp 기본 내장 객체 중 : [ exception ]
+     예외 타입 : <%= exception.getClass().getName() %><br>
+     예외 메시지 : <%= exception.getMessage() %><br>
+  </p>
   
 </div>
 
