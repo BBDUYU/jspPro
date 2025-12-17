@@ -1,11 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2025. 12. 17. 오후 3:48:33</title>
+<title>2025. 12. 17. 오후 4:36:51</title>
 <link rel="shortcut icon" type="image/x-icon" href="http://localhost/jspPro/images/SiSt.ico">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link rel="stylesheet" href="http://localhost/jspPro/resources/cdn-main/example.css">
@@ -23,28 +24,21 @@
 </header>
 <div>
   <xmp class="code"> 
-  	ex06_06.jsp
+  	
   </xmp>
   <%
-  	String message = "<h3>Hello</h3> <br>홍길동</br>";
+  	long price = 22345;
+  	String strPrice2="12,345.98";
+  	
   %>
-  
-  <div id="demo">
-  	<%=message %>
-  	<br />
-  	<c:out value="<%=message %>"></c:out>
-  	<br />
-  	<c:out value="<%=message %>" escapeXml="true"></c:out>
-  	<br />
-  	<c:out value="<%=message %>" escapeXml="false"></c:out>
-  </div>
-  
+  strPrice2=<%=strPrice2 %> <br />
+  <fmt:parseNumber var="price2" value="<%=strPrice2 %>"
+  pattern="00,000.00"></fmt:parseNumber>
+  price2 = ${price2 } 
   <hr />
-  
-  <c:set var="name" value="홍길동,문종범,류지호"></c:set>
-  <c:forTokens items="${name }" delims=",/." var="n" varStatus="vs">
-  	<li>${vs.count} : ${n }</li>
-  </c:forTokens>
+  price =<%=price %> <br />
+  <fmt:formatNumber var="strPrice" value="<%=price %>" type="number" pattern="##,###.00"></fmt:formatNumber>
+  strPrice = ${strPrice }
 </div>
 
 <script>
