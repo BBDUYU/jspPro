@@ -1,3 +1,6 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.Map.Entry"%>
+<%@page import="java.util.Set"%>
 <%@page import="com.util.Cookies"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
@@ -6,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2025. 12. 17. 오후 12:21:12</title>
+<title>2025. 12. 17. 오후 12:35:58</title>
 <link rel="shortcut icon" type="image/x-icon" href="http://localhost/jspPro/images/SiSt.ico">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link rel="stylesheet" href="http://localhost/jspPro/resources/cdn-main/example.css">
@@ -24,29 +27,31 @@
 </header>
 <div>
   <xmp class="code"> 
-  	ex05_03
-  	
-  	el 자료형과 리터럴
-  	boolean : true/false
-  	정수 : 0 ~ 9 음수 - 	java.lang.Long타입
-  	실수 :				java.lang.Double
-  	문자열 : '' "" 		\' \" \\ java.lang.String
+  	ex05_03_ok.jsp
   </xmp>
-  ${10 }
-  <br />
+  <!-- el + jstl로 변경 -->
+  <c:forEach items="${cookie }" var="entry">
+  	<li>${entry.key } : ${entry.value.value }</li> 
+  </c:forEach>
+  <hr />
   <%
-  	//EL 기본 내장 객체 : cookie
-  	//public Map<String, Cookie> cookieMap = new HashMap<>();
-  	Cookie cookie=Cookies.createCookie("name","admin");
-  	response.addCookie(cookie);
-  	
-  	cookie=Cookies.createCookie("age","20");
-  	response.addCookie(cookie);
-  	
-  	cookie=Cookies.createCookie("addr","seoul");
-  	response.addCookie(cookie);
+  	Cookies cookies = new Cookies(request);
+   	Set<Entry<String,Cookie>> set = cookies.cookieMap.entrySet();
+   	Iterator<Entry<String,Cookie>> ir=set.iterator();
+   	while(ir.hasNext()){
+   		Entry<String,Cookie> entry=ir.next();
+   		String cookieName=entry.getKey();
+   		String cookieValue=entry.getValue().getValue();
+   	 %>
+     <li> <%= cookieName %> : <%= cookieValue %> </li>
+    <%       
+      }
   %>
-  <a href="ex05_03_ok.jsp">ex05_03_ok.jsp</a>
+  EL cookie : ${cookie.name} <br /> 
+  EL name : ${cookie.name.value} <br /> 
+  EL age : ${cookie.age.value} <br /> 
+  EL addr : ${cookie.addr.value} <br /> 
+  
 </div>
 
 <script>

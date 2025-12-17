@@ -1,12 +1,15 @@
-<%@page import="com.util.Cookies"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2025. 12. 17. 오후 12:21:12</title>
+<title>2025. 12. 17. 오후 2:42:26</title>
 <link rel="shortcut icon" type="image/x-icon" href="http://localhost/jspPro/images/SiSt.ico">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link rel="stylesheet" href="http://localhost/jspPro/resources/cdn-main/example.css">
@@ -24,29 +27,15 @@
 </header>
 <div>
   <xmp class="code"> 
-  	ex05_03
+  	ex06
   	
-  	el 자료형과 리터럴
-  	boolean : true/false
-  	정수 : 0 ~ 9 음수 - 	java.lang.Long타입
-  	실수 :				java.lang.Double
-  	문자열 : '' "" 		\' \" \\ java.lang.String
+  	JSTL == JSP Standard Tag Library
+  	- 커스텀 태그 중에 많이 사용하는 것들을 모아서 표준 태그로 만든것
+  	- jsp:include 태그
+  	- html + java -> 뒤섞임, 유지보수 X
+  	- 변수 지원 태그, 흐름제어태그, url 처리태그, 출력태그, 함수
   </xmp>
-  ${10 }
-  <br />
-  <%
-  	//EL 기본 내장 객체 : cookie
-  	//public Map<String, Cookie> cookieMap = new HashMap<>();
-  	Cookie cookie=Cookies.createCookie("name","admin");
-  	response.addCookie(cookie);
-  	
-  	cookie=Cookies.createCookie("age","20");
-  	response.addCookie(cookie);
-  	
-  	cookie=Cookies.createCookie("addr","seoul");
-  	response.addCookie(cookie);
-  %>
-  <a href="ex05_03_ok.jsp">ex05_03_ok.jsp</a>
+  
 </div>
 
 <script>

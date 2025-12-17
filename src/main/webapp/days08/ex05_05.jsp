@@ -1,12 +1,13 @@
-<%@page import="com.util.Cookies"%>
+<%@page import="days08.FormatUtil"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2025. 12. 17. 오후 12:21:12</title>
+<title>2025. 12. 17. 오후 2:25:52</title>
 <link rel="shortcut icon" type="image/x-icon" href="http://localhost/jspPro/images/SiSt.ico">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link rel="stylesheet" href="http://localhost/jspPro/resources/cdn-main/example.css">
@@ -24,29 +25,24 @@
 </header>
 <div>
   <xmp class="code"> 
-  	ex05_03
-  	
-  	el 자료형과 리터럴
-  	boolean : true/false
-  	정수 : 0 ~ 9 음수 - 	java.lang.Long타입
-  	실수 :				java.lang.Double
-  	문자열 : '' "" 		\' \" \\ java.lang.String
+	ex05_05
+	
+	EL에서 객체의 메서드 호출  	
   </xmp>
-  ${10 }
-  <br />
   <%
-  	//EL 기본 내장 객체 : cookie
-  	//public Map<String, Cookie> cookieMap = new HashMap<>();
-  	Cookie cookie=Cookies.createCookie("name","admin");
-  	response.addCookie(cookie);
+  	long price = 22345;
+  	request.setAttribute("price", price);
   	
-  	cookie=Cookies.createCookie("age","20");
-  	response.addCookie(cookie);
-  	
-  	cookie=Cookies.createCookie("addr","seoul");
-  	response.addCookie(cookie);
+  	FormatUtil f = new FormatUtil();
+  	request.setAttribute("f", f);
   %>
-  <a href="ex05_03_ok.jsp">ex05_03_ok.jsp</a>
+  price = <%=price %>; <br />
+  
+  fmt price = <fmt:formatNumber value="${price }" pattern="#,##0"/> <br />
+  
+  EL price=${FormatUtil.staticNumber(price,"#,##0") } <br />
+  EL price=${f.number(price,"#,##0") } <br />
+  
 </div>
 
 <script>
