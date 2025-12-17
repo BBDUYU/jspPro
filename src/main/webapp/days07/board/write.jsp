@@ -3,6 +3,12 @@
 <%
    String contextPath = request.getContextPath();
 %>
+<%
+	String sessionName = "auth";
+	String logonId  = null;
+	
+	logonId=(String)session.getAttribute(sessionName);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +45,8 @@
 		<tr>
 			<td align="center">이름</td>
 			<td><input type="text" name="writer" size="15"
-				autofocus="autofocus" required="required"></td>
+				autofocus="autofocus" required="required"
+				value="<%=logonId %>" readonly="readonly"></td>
 		</tr>
 		<tr>
 			<td align="center">비밀번호</td>

@@ -3,6 +3,12 @@
 <%
    String contextPath = request.getContextPath();
 %>
+<%
+	String sessionName = "auth";
+	String logonId  = null;
+	
+	logonId=(String)session.getAttribute(sessionName);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,11 +69,15 @@
     <tfoot>
       <tr>
         <td colspan="4" align="center">
-          <a href="<%= contextPath %>/board/edit.do?seq=${dto.seq}&currentPage=${param.currentPage}&numberPerPage=${param.numberPerPage}&searchCondition=${param.searchCondition}&searchWord=${param.searchWord}">수정하기</a>
-          <a href="<%= contextPath %>/board/delete.do?seq=${dto.seq}&currentPage=${param.currentPage}&numberPerPage=${param.numberPerPage}&searchCondition=${param.searchCondition}&searchWord=${param.searchWord}">삭제하기</a>
+          <c:if test="${dto.writer eq sessionScope.auth}">
+	          <a href="<%= contextPath %>/board/edit.do?seq=${dto.seq}&currentPage=${param.currentPage}&numberPerPage=${param.numberPerPage}&searchCondition=${param.searchCondition}&searchWord=${param.searchWord}">수정하기</a>
+	          <a href="<%= contextPath %>/board/delete.do?seq=${dto.seq}&currentPage=${param.currentPage}&numberPerPage=${param.numberPerPage}&searchCondition=${param.searchCondition}&searchWord=${param.searchWord}">삭제하기</a>
+	          <!-- jquery.com 모달창 삭제 -->
+	          <input type="button" id="btnModalDelete" value="모달창 삭제">
+          </c:if>
+          
+          
           <a href="<%= contextPath %>/board/list.do?currentPage=${param.currentPage}&numberPerPage=${param.numberPerPage}&searchCondition=${param.searchCondition}&searchWord=${param.searchWord}">Home</a>
-          <!-- jquery.com 모달창 삭제 -->
-          <input type="button" id="btnModalDelete" value="모달창 삭제">
         </td>
       </tr>
     </tfoot>

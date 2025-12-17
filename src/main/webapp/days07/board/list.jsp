@@ -3,6 +3,12 @@
 <%
    String contextPath = request.getContextPath();
 %>
+<%
+	String sessionName = "auth";
+	String logonId  = null;
+	
+	logonId=(String)session.getAttribute(sessionName);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,8 +26,13 @@
 <header>
   <h1 class="main"><a href="#" style="position: absolute;top:30px;">kEnik HOme</a></h1>
   <ul>
-    <li><a href="#">로그인</a></li>
-    <li><a href="#">회원가입</a></li>
+	<c:if test="${ empty sessionScope.auth }">
+	      <li><a href="<%= contextPath %>/days08/ex04_default.jsp">로그인</a></li>
+	    </c:if>
+	    <c:if test="${ not empty sessionScope.auth }">
+	      <li>[<%= logonId %>]님 로그인하셨습니다.
+	        <a href="<%= contextPath %>/days08/ex04_logout.jsp">로그아웃</a></li>
+	    </c:if>
   </ul>
 </header>
 <div>
