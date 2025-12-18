@@ -45,7 +45,17 @@
 			  let replyJSON = httpRequest.responseText;
 			  // json -> js Object 변환 : JSON.parse();
 			  const deptObj = JSON.parse(replyJSON);
-			  console.log(deptObj);
+			  //console.log(deptObj);
+			  // [] 배열
+			  const deptArr = deptObj.departments;
+			  
+			  for (let dept of deptArr) {
+				$("#demo").append(`
+						<li>
+							\${dept.deptno} / \${dept.dname} / \${dept.loc}
+						</li>
+						`);
+			  }
 		  }
 	  }
   }
