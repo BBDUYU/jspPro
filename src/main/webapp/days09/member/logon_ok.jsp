@@ -37,6 +37,6 @@
       location = "logon.jsp?logon=fail";
    }
    System.out.println(referer);
-   response.sendRedirect(referer);
+   response.sendRedirect(location);
   
 %>

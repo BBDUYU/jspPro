@@ -26,6 +26,38 @@
   	ex03
   	
   	AJAX
+  	- 서버와 데이터를 교환하는 기능
+  	- 웹 페이지 전체를 새로 고침하지 않음
+  	- Asynchronous Javascript And Xml
+  	
+  	- js ajax 처리순서(과정)
+  		(1) 웹 페이지에서 js 이벤트 발생
+  		(2) XMLHttpRequest 객체 생성
+  		(3) XMLHttpRequest 객체 + 설정
+  			open()
+  		(4) 비동기적으로 요청
+  			send() -> callback 함수 호출 (응답 데이터 처리)
+  		     
+  		   	A) get 방식
+              XMLHttpRequest객체.open("GET", "/test.jsp?id=admin", true);
+              XMLHttpRequest객체.send();
+     		B) post 방식
+              XMLHttpRequest객체.open("POST", "/test.jsp", true);
+              XMLHttpRequest객체.send("id=admin");
+              
+              ㄴ. XMLHttpRequest 객체 - on readystatechange 이벤트 속성  
+               if( state = 200 + readState == 4 ) 
+                   // 응답 데이터
+                   1) 텍스트(JSON) - responseText 속성
+                   2) xml          - responseXML 속성   
+         
+         ex04.jsp
+         ex04_02.jsp
+         ex04_ajax_info.txt
+                   
+  	- jquery ajax method
+  	- fetch api
+  	
   </xmp>
   
 </div>

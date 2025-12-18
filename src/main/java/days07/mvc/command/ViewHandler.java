@@ -22,7 +22,7 @@ public class ViewHandler implements CommandHandler{
 
 		int seq = Integer.parseInt( request.getParameter("seq" ) );			
 
-		Connection conn = ConnectionProvider.getConnetcion();
+		Connection conn = ConnectionProvider.getConnection();
 		BoardDAO dao = new BoardDAOImpl(conn);
 
 		BoardDTO dto = null;

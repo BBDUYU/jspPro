@@ -48,7 +48,7 @@ public class ListHandler implements CommandHandler{
 		// 검색 끝
 
 		// Connection conn = DBConn.getConnection();
-		Connection conn = ConnectionProvider.getConnetcion();
+		Connection conn = ConnectionProvider.getConnection();
 		
 		BoardDAO dao = new BoardDAOImpl(conn);
 

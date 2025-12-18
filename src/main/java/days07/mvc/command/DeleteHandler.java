@@ -31,7 +31,7 @@ public class DeleteHandler implements CommandHandler{
 			int seq = Integer.parseInt(request.getParameter("seq"));
 			String pwd = request.getParameter("pwd"); // 입력받은 비밀번호
 
-			Connection conn = ConnectionProvider.getConnetcion(); 
+			Connection conn = ConnectionProvider.getConnection(); 
 			BoardDAO dao = new BoardDAOImpl(conn);
 
 			int rowCount = 0;

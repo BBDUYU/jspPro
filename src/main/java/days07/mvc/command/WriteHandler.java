@@ -44,7 +44,7 @@ public class WriteHandler implements CommandHandler{
 					.content(content)				
 					.build();
 
-			Connection conn = ConnectionProvider.getConnetcion();
+			Connection conn = ConnectionProvider.getConnection();
 			BoardDAO dao = new BoardDAOImpl(conn);
 
 			int rowCount = 0;
