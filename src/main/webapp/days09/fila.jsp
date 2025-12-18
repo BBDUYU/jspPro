@@ -1,4 +1,4 @@
-
+ 
 <!DOCTYPE html>
 
 <!--[if IE 6]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 ie6" lang="ko-KR"> <![endif]-->
@@ -7,7 +7,7 @@
 <!--[if IE 9]> <html class="no-js lt-ie10 ie9" lang="ko-KR"> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-js" lang="ko-KR"> <!--<![endif]-->
 <head>
-<!-- #HJ 2019-08-19 Google Tag Manager -->
+<!-- #HJ 2019-08-19 Google Tag Manager - 광고용 버려도됨 start -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -16,6 +16,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script>
 		window.dataLayer = window.dataLayer || [];
 </script>
+<!-- 버려도됨 end -->
 <!-- End Google Tag Manager -->
 <!-- #HJ 2020-05-27 Google optimize 2022-04-28 제거함 -->
 
@@ -36,7 +37,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<meta name="description" content="FILA 공식 온라인 스토어, 신상품정보, 신규가입 혜택, 매장안내" />
 	<meta name="keywords" content="FILA,휠라코리아,휠라,FILA KOREA" />
 	<meta name="image" content="http://www.fila.co.kr/images/img_yrl_fila.png" />
-	<meta property="og:url" content="https://www.fila.co.kr/main/main.asp" />
+	<meta property="og:url" content="https://www.fila.co.kr/main/main.asp" /> <!-- og:url = 링크를 외부로 가져갔을시 뜨는 제목, 설명, 사진 -->
 	<meta property="og:title" content="FILA KOREA" />
 	<meta property="og:description" content="FILA 공식 온라인 스토어, 신상품정보, 신규가입 혜택, 매장안내" />
 	<meta property="og:image" content="http://www.fila.co.kr/images/img_yrl_fila.png" />	
@@ -70,7 +71,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <script src="/pc/resource/js/pages/default.js?v=202504161631"></script>
 
-
+<!-- 버려도됨 start -->
 	<script>
 	jQuery(window.document).ready(function(){
 		jQuery(window.document).on("contextmenu", function(event){return false;});
@@ -133,7 +134,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- 2023-09-01 Facebook Pixel Code 삭제 tagmanager에 존재함 -->
 
-<!-- 2023-02-02 Kakao Pixel Code -->
+<!-- 2023-02-02 Kakao Pixel Code - 광고 효율 측정 버려도됨 -->
 <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/kas/static/kp.js"></script>
 <script type="text/javascript">
 kakaoPixel('4536685350611693576').pageView();
@@ -157,7 +158,7 @@ cre('send','Pageview');
 <!-- 2020-07-23 #HJ karamel S 2022-05-30 제거 -->
 <!-- 2020-07-23 #HJ karamel E -->
 
-<!-- cre.ma / 공통 스크립트 (PC) / 스크립트를 수정할 경우 연락주세요 (support@cre.ma) -->
+<!-- cre.ma / 공통 스크립트 (PC) / 스크립트를 수정할 경우 연락주세요 (support@cre.ma) - 구매후기 솔루션 버려도됨 -->
 <script>(function(i,s,o,g,r,a,m){if(s.getElementById(g)){return};a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.id=g;a.async=1;a.src=r;m.parentNode.insertBefore(a,m)})(window,document,'script','crema-jssdk','//widgets.cre.ma/fila.co.kr/init.js');</script>
 
 		<script> window.cremaAsyncInit = function () { crema.init( null, null ); } </script>
@@ -166,7 +167,7 @@ cre('send','Pageview');
 <script src="https://www.googleoptimize.com/optimize.js?id=OPT-WZGPRFT"></script>
 <!-- #HJ Opinno 2023-06-01 E -->
 
-<!-- #HJ INSIDER 2024-01-16 S -->
+<!-- #HJ INSIDER 2024-01-16 S - 버려도됨-->
 <script src="https://filacokr.api.useinsider.com/ins.js?id=10009917"></script>
 <!-- #HJ INSIDER 2024-01-16 E -->
   <script type="application/ld+json">
@@ -184,7 +185,7 @@ cre('send','Pageview');
       ]
     }
   </script>
-
+<!-- 버려도됨 end -->
 
 <!-- 개별 css, js -->
 <script src="/pc/resource/js/pages/main.js?v=202410071035"></script>
@@ -227,6 +228,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</li-->
 
 			
+			
+			
 			<li>
 				<a href="/main/women.asp">WOMEN</a>
 
@@ -256,7 +259,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<ul>
 									<c:foreach>
 										<li>
-											<a href="/product/new.asp?no=${이벤트pk }">신상품</a>
+											<a href="/product/new.asp?no=${이벤트pk }">${이벤트이름 }</a>
 										</li>
 									</c:foreach>
 								</ul>
@@ -301,9 +304,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<div class="category-menu-box">
 
 							<c:foreach>
-								<a href="/product/list.asp?no=${상위카테고리 }" class="link-tit">의류</a>
+								<a href="/product/list.asp?no=${상위카테고리 }" class="link-tit">${상위카테고리명 }</a>
 									<c:foreach>
-										<a href="/product/list.asp?no=${하위카테고리} " class="link-tit">의류</a>
+										<a href="/product/list.asp?no=${하위카테고리} " class="link-tit">${하위카테고리명 }</a>
 									</c:foreach>
 							</c:foreach>
 							
@@ -1593,7 +1596,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- //util -->
 </header>		
 <!-- // end of :: header -->	
-<form name="searchFormReal" method="get"  autocomplete="off" action="/search/search_result.asp">
+<form name="searchFormReal" method="get"  autocomplete="off" action="/search/search_result.asp"> ????????????????
 	<input type="hidden" name="sWord" value />
 	<input type="hidden" name="searchsCateNo" value />
 </form>	
@@ -1630,6 +1633,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</div>
 							</a>
 						</div>
+						<!-- 반복 -->
 						<c:foreach>
 							<div class="swiper-slide">
 							<a href="/event/view.asp?seq=${기획전번호 }" target="_self">
@@ -1651,7 +1655,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							</a>
 						</div>
 						</c:foreach>
-						<!-- 반복 -->
+						
 						<div class="swiper-slide">
 							<a href=" /event/view.asp?seq=1294" target="_self">
 								<!-- img -->
@@ -1913,7 +1917,7 @@ function mainGroup(num){
 								
 							</div>
 						</li>
- 
+ 					<!-- 반복 -->
 						<li class="swiper-slide">
 							<div class="photo">
 								<a href="http://www.fila.co.kr/event/view.asp?seq=1280" target="_self">
@@ -2108,18 +2112,19 @@ function mainGroup(num){
 							<!-- 리스트 -->
 							<div class="tennis-story-box swiper">
 								<ul class="thumb3_list swiper-wrapper">			
- 
+ 									
+ 									<c:foreach>
 									<li class="swiper-slide">
-										<a href="/brand/tennis/view.asp?num=1607">
-											<img src="//filacdn.styleship.com/filacontent2/data/filastory/img_cont_thum_251211_38.jpg" alt="">
+										<a href="/brand/tennis/view.asp?num=${pk }">
+											<img src="${link }" alt="">
 											<div class="txt-box">
-												<p class="tit">한 편의 영상이 만들어지기까지</p>
-												<p class="txt">EBS 손우열 PD가 말해주는 방송 제작기</p>
-												<p class="category">People</p>
+												<p class="tit">${제목 }</p>
+												<p class="txt">${내용 }</p>
+												<p class="category">${카테고리명 }</p>
 											</div>
 										</a>
 									</li>
- 
+ 									</c:foreach>
 									<li class="swiper-slide">
 										<a href="/brand/tennis/view.asp?num=1605">
 											<img src="//filacdn.styleship.com/filacontent2/data/filastory/thumbnail_87.jpg" alt="">
@@ -2877,6 +2882,7 @@ frm.submit();
 	</div>
 </footer>
 <!-- // end of :: footer -->
+<!-- 이 아래로는 광고, 마케팅용 데이터수집코드로 추정 -->
 <form name="form6" id="form6"  target="dataFrame"><input type="hidden" name="checkwish"><input type="hidden" name="ProductQuantity"></form>
 <iframe name="dataFrame" id="dataFrame" style="display:none;"></iframe>
 
