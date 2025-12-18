@@ -40,4 +40,19 @@
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping> -->
+	<filter>
+		<description>인코딩필터</description>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>com.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<description>인코딩 초기값</description>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+			<filter-name>characterEncodingFilter</filter-name>
+			<url-pattern>/*</url-pattern> 
+			<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
 </web-app>
