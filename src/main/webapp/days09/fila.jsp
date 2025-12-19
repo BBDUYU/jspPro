@@ -1,19 +1,10 @@
  
 <!DOCTYPE html>
 
-<!--[if IE 6]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 ie6" lang="ko-KR"> <![endif]-->
-<!--[if IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 ie7" lang="ko-KR"> <![endif]-->
-<!--[if IE 8]> <html class="no-js lt-ie10 lt-ie9 ie8" lang="ko-KR"> <![endif]-->
-<!--[if IE 9]> <html class="no-js lt-ie10 ie9" lang="ko-KR"> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="no-js" lang="ko-KR"> <!--<![endif]-->
+
 <head>
 <!-- #HJ 2019-08-19 Google Tag Manager - 광고용 버려도됨 start -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PK46MQC');</script>
-<script>
+
 		window.dataLayer = window.dataLayer || [];
 </script>
 <!-- 버려도됨 end -->
@@ -241,20 +232,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<a class="link-tit">New &amp; Featured</a>
 
 							<div>
-								<ul>
-									<li>
-										<a href="/product/new.asp?no=2001">신상품</a>
-									</li>
-									<li>
-										<a href="/product/best.asp?no=2001">베스트</a>
-									</li>
-									<li>
-										<a href="/product/style.asp?cno=101">스타일</a>
-									</li>
-									<li>
-										<a href="/product/sale.asp?no=2001">세일</a>
-									</li>
-								</ul>
+								
 
 								<ul>
 									<c:foreach>
@@ -265,37 +243,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</ul>
 
 
-								<ul>
-									<li>
-										<a href="/product/list.asp?no=2246">Holiday Gifts</a>
-									</li>
-									<li>
-										<a href="/event/view.asp?seq=1303">Ritmo Sleek</a>
-									</li>
-									<li>
-										<a href="/event/view.asp?seq=1298">Glio Silver-Moon</a>
-									</li>
-									<li>
-										<a href="/event/view.asp?seq=1294">플로우다운</a>
-									</li>
-									<li>
-										<a href="/event/view.asp?seq=1289">Her Winter Ritual</a>
-									</li>
-									
-									<li>
-										<a href="/event/view.asp?seq=1285">HAREPIN 1998</a>
-									</li>
-									
-									<li>
-										<a href="/event/view.asp?seq=1279">한소희&김나영 에샤페</a>
-									</li>
-									<li>
-										<a href="/event/view.asp?seq=1269">Sydney Trip with 차정원</a>
-									</li>
-									<li>
-										<a href="/event/view.asp?seq=1277">에센셜 언더웨어</a>
-									</li>
-								</ul>
+								
 							</div>
 						</div>
 						<!-- //side menu -->
@@ -1795,7 +1743,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</section>
 			<!-- //상단 슬라이드 -->
 			
-<script>
+<script> ///???????????????????????????????
 function mainGroup(num){
 		var formStr = "";	
 		randNo = Math.floor((Math.random() * (999999 - 1 + 1)) + 1);		
@@ -1831,8 +1779,8 @@ function mainGroup(num){
 
 				<div class="category-btn-box">
         
-        			<c:foreach>
-        				<button type="button" class="groupBtn q4663p" onclick="mainGroup(${상품카테고리번호});"># ${카테고리명 }</button> <!-- 활성화시 클래스 on -->
+        			<c:foreach item="상품리스트" var="i">
+        				<button type="button" class="groupBtn q4663p" onclick="mainGroup(${i.상품하위카테고리번호});"># ${카테고리명 }</button> <!-- 활성화시 클래스 on -->
         			</c:foreach>
         	
 					<button type="button" class="groupBtn q4663p" onclick="mainGroup(4663);"># 플로우다운</button> <!-- 활성화시 클래스 on -->
@@ -2871,7 +2819,7 @@ frm.submit();
 				<div>
 					<select onchange="window.open(value,'_target')">
 						<option value="">FAMILY SITE</option>
-						<option value="https://www.keds.co.kr/main/main.asp">KEDS 온라인스토어</option>
+						<option value="#">KEDS 온라인스토어</option>
 						<option value="https://www.nicedocu.com/web/buyer/main/index.jsp">FILA 입찰공고</option>
 						<option value="https://www.mistoholdings.com/kor/main.do">Misto Holdings</option>
 					</select>
