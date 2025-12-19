@@ -15,6 +15,7 @@
 		<welcome-file>default.xhtml</welcome-file>
 	</welcome-file-list>
 
+
 	<resource-ref>
 		<description>Oracle Datasource example</description>
 		<res-ref-name>jdbc/myoracle</res-ref-name>
@@ -22,6 +23,23 @@
 		<res-auth>Container</res-auth>
 	</resource-ref>
 
+	<!-- 분, 0 또는 음수로 설정하면 세션유효시간은 갖지않는다 -> 강제종료 필요 반드시 세션 타임아웃 설정 <session-config> 
+		<session-timeout>50</session-timeout> </session-config> -->
+	<!-- <servlet>
+		<description>days07 MVC 패턴 컨트롤러</description>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>days07.mvc.controller.DispatcherServlet</servlet-class>
+		<init-param>
+			<description>요청URL-처리할 CommandHandler 객체 매핑 설정 파일 등록</description>
+			<param-name>mappingPath</param-name>
+			<param-value>/WEB-INF/commandHandler.properties</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping> -->
 	<filter>
 		<description>인코딩필터</description>
 		<filter-name>characterEncodingFilter</filter-name>
@@ -37,20 +55,4 @@
 			<url-pattern>/*</url-pattern> 
 			<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
-	<servlet>
-		<description>서블릿 3.1 파일 업로드 테스트</description>
-		<servlet-name>uploadServlet</servlet-name>
-		<servlet-class>days10.UploadServlet</servlet-class>
-		<multipart-config>
-			<location>C:\Tools\apache-tomcat-9.0.112\temp</location>
-			<max-file-size>-1</max-file-size>
-			<max-request-size>-1</max-request-size>
-			<file-size-threshold>1024</file-size-threshold>
-		</multipart-config>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>uploadServlet</servlet-name>
-		<url-pattern>/days10/upload</url-pattern>
-	</servlet-mapping>
-	
 </web-app>

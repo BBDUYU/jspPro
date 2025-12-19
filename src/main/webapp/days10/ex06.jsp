@@ -51,6 +51,10 @@
 		       
   		   
   		3) 서블릿 3 - 라이브러리 제공
+  			ㄱ. HttpServletRequest의 getPart() 메서드를 이용하면 업로드된 데이터 접근
+  			ㄴ. 서블릿이 multipart 데이터를 처리할 수 있도록 설정이 필요
+  				(1) web.xml <multipart-config>
+  				(2) @MultipartConfig 어노테이션
   </xmp>
   
 <form action="ex06_ok_02.jsp" method="post" enctype="multipart/form-data">
