@@ -136,7 +136,7 @@ $(function(){
 		  $.ajax({
 			  //url:`ex03_empjson.jsp`,
 			  url:`ex03_empjson_lib.jsp`,
-			  type:"GET",
+			  type:"GET", 
 			  data:{deptno:deptno},
 			  cache:false,
 			  dataType:"json",
