@@ -56,13 +56,15 @@ $(function(){
 		  $.ajax({
 			  url:`ex01_idcheck.jsp`,
 			  type:"GET",
-			  data:{empno:empno},
+			  data:params,
 			  cache:false,
 			  dataType:"json",
 			  success: function(data, textStatus, jqXHR){
-				  //{"count":1} 자동으로 자바스크립트 객체로 변환 - 변환필요 X
-				  alert(data.count);
-				  
+				 if(data.count==1){
+					 $("#notice").css("color","red").text("이미 사용중인 ID입니다");
+				 }else{
+					 $("#notice").css("color","blue").text("사용 가능한 ID입니다");
+				 }
 			  },
 			  error: function(){
 				  alert("error")
