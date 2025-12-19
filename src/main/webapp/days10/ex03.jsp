@@ -134,7 +134,8 @@ $(function(){
 		  $("#spndeptno").text(deptno);
 		
 		  $.ajax({
-			  url:`ex03_empjson.jsp`,
+			  //url:`ex03_empjson.jsp`,
+			  url:`ex03_empjson_lib.jsp`,
 			  type:"GET",
 			  data:{deptno:deptno},
 			  cache:false,

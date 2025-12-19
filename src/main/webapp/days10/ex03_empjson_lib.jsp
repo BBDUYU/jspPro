@@ -1,3 +1,5 @@
+<%@page import="net.sf.json.JSONArray"%>
+<%@page import="net.sf.json.JSONObject"%>
 <%@page import="java.util.Date"%>
 <%@page import="com.util.JdbcUtil"%>
 <%@page import="com.util.ConnectionProvider"%>
@@ -8,6 +10,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%
+    // https://www.json.org/
    int empno;                          
    String ename;                       
    String job;                         
@@ -33,8 +36,11 @@
    PreparedStatement pstmt = null;
    ResultSet rs = null;
    
-   String resultJSON = "{";   
-   resultJSON += "  \"emp\":[";
+   // {}
+   JSONObject resultJSON = new JSONObject();
+   
+    // []
+    JSONArray jsonEmpArr = new JSONArray();    
    
    try{
         conn = ConnectionProvider.getConnection();
@@ -52,17 +58,22 @@
               comm = rs.getDouble("comm");
               deptno = rs.getInt("deptno");
               
-              resultJSON += String.format(
-                    "{\"empno\":%d,\"ename\":\"%s\",\"sal\":%.2f,\"job\":\"%s\"},"
-                    , empno, ename, sal, job);
-           }while(rs.next());
-            // 마지막 콤마 제거     
-             resultJSON = resultJSON.substring( 0, resultJSON.length()-1); 
-        } // if
-        
-        
-        resultJSON += "]";
-        resultJSON += "}";
+              JSONObject jsonEmp = new JSONObject();
+              jsonEmp.put("empno", empno);
+              jsonEmp.put("ename", ename);
+              jsonEmp.put("job", job);
+              jsonEmp.put("mgr", mgr);
+              //jsonEmp.put("hiredate", hiredate);
+              jsonEmp.put("sal", sal);
+              jsonEmp.put("comm", comm);
+              jsonEmp.put("deptno", deptno); 
+              
+              jsonEmpArr.add(jsonEmp);  
+           }while(rs.next()); 
+            
+        } // if 
+           resultJSON.put("emp", jsonEmpArr);
+       
    }catch(Exception e){
         e.printStackTrace();
    }finally{
