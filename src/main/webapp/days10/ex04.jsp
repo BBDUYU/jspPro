@@ -29,10 +29,21 @@
 </div>
 
 <script>
+
+/*[2]*/
+getText("ex04_fetch_api.txt");
+
+async function getText(url){
+	let x = await fetch(url)
+	let y = await x.text();
+	document.getElementById("demo").innerHTML = y
+}
+
+/*[1]
   let url="ex04_fetch_api.txt";
   fetch(url)
   .then(x=>x.text())
-  .then(y=>document.getElementById("demo").innerHTML = y);
+  .then(y=>document.getElementById("demo").innerHTML = y); */
 </script>
 
 </body>

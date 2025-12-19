@@ -47,7 +47,21 @@
 </div>
 
 <script>
+//[4]
+document.getElementById("btnEmpnoCheck").addEventListener("click", function (e) {
+  e.preventDefault();
+
+  const empno = document.querySelector("input[name='empno']").value;
+
+  fetch(`ex01_idcheck.jsp?empno=\${encodeURIComponent(empno)}`)
+    .then(res => res.json())
+    .then(data => alert(data.count))
+    .catch(() => alert("에러"));
+});
+
+
 // [3] - serialize()
+/*
 $(function(){
 	  $("#btnEmpnoCheck").on("click",function(){
 		  let params = $("form").serialize();
@@ -73,7 +87,7 @@ $(function(){
 		 
 	  })
 }) 
-
+*/
 // [2] - data방식
 /* 
 $(function(){
