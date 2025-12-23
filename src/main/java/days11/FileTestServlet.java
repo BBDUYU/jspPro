@@ -115,7 +115,55 @@ public class FileTestServlet extends HttpServlet {
               RequestDispatcher dispatcher = request.getRequestDispatcher(path);
               dispatcher.forward(request, response);
           }else if(uri.endsWith("update_ok.ss")) { // 수정 저장
-             
+        	  int maxPostSize = 5 * 1024 * 1024 ;  
+              String encoding = "UTF-8"; 
+              FileRenamePolicy policy = new DefaultFileRenamePolicy(); 
+              MultipartRequest multiRequest = new MultipartRequest(
+                    request
+                    , saveDirectory
+                    , maxPostSize
+                    , encoding
+                    , policy
+                    );
+
+              int num = Integer.parseInt(multiRequest.getParameter("num") );            
+              String delete_filesystemname =
+                    multiRequest.getParameter("filesystemname");
+            
+              FileTestDTO dto = new FileTestDTO();
+              dto.setNum(num);
+              String subject = multiRequest.getParameter("subject");
+              dto.setSubject(subject);
+            
+              File attachFile = multiRequest.getFile("attachFile");
+              if( attachFile != null) { 
+                 String fileName  = attachFile.getName();
+                 long filelength = attachFile.length();
+                 String originalFileName = multiRequest.getOriginalFileName("attachFile");
+                 String filesystemName = multiRequest.getFilesystemName("attachFile");
+
+                 dto.setFilelength(filelength);
+                 dto.setOriginalfilename(originalFileName);
+                 dto.setFilesystemname(filesystemName);
+
+                 // 수정 전에 있던 첨부파일 삭제...
+                 String deleteFilePath = 
+                       String.format("%s\\%s"
+                             ,saveDirectory , delete_filesystemname);
+                 File deleteFile = new File(deleteFilePath);
+                 if( deleteFile.exists() ) deleteFile.delete();
+
+              }else if(!delete_filesystemname.equals("")) { 
+                 FileTestDTO dto2 =  dao.selectOne(conn, num);
+                 dto.setFilelength(dto2.getFilelength());
+                 dto.setOriginalfilename(dto2.getOriginalfilename());
+                 dto.setFilesystemname(dto2.getFilesystemname());
+                 // 
+              } // if
+
+              int rowCount = dao.update(conn, dto);                
+              response.sendRedirect("list.ss");
+
           }
              
           
