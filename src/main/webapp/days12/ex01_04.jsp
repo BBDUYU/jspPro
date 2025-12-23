@@ -92,7 +92,7 @@
     }
   </script>
   
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnZn-TjIF63kzqVm95EbpOPvDL5OirMrw&callback=myMap"></script> 
+  <script src="https://maps.googleapis.com/maps/api/js?key=w&callback=myMap"></script> 
 </div>
 <script>
 </script>  
