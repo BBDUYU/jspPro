@@ -59,7 +59,7 @@
 									<img width="${ dto.depth * 15 }">
 									<img src="/jspPro/days15/replyboard/images/arr.gif">
 								</c:if> <a
-								href="view.do?num=${dto.num}&page=${param.page}&searchCondition=${ param.searchCondition }&searchWord=${ param.searchWord }">${ dto.subject }</a>
+								href="view.htm?num=${dto.num}&page=${param.page}&searchCondition=${ param.searchCondition }&searchWord=${ param.searchWord }">${ dto.subject }</a>
 								<c:if test="${dto.newImg}">
 									<img src="/jspPro/days15/replyboard/images/ico-new.gif">
 								</c:if></td>
